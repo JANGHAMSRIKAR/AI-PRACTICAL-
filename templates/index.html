@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocks World AI Planner</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="tag">ARTIFICIAL INTELLIGENCE PROJECT</div>
+            <h1>Blocks World <span>Planner</span></h1>
+            <p>Plan smart. Move blocks. Reach your goal.</p>
+        </header>
+
+        <section class="panel">
+            <h2>01. Define Your Problem</h2>
+            <p class="hint">
+                Enter one stack per line, from top block to bottom block.
+                Separate blocks with spaces.
+            </p>
+
+            <div class="input-grid">
+                <div>
+                    <label for="initial">Initial State</label>
+                    <textarea id="initial" rows="4">A B
+C</textarea>
+                    <small>Example: A B means A sits on B.</small>
+                </div>
+
+                <div>
+                    <label for="goal">Goal State</label>
+                    <textarea id="goal" rows="4">C A
+B</textarea>
+                    <small>Use the same blocks in both states.</small>
+                </div>
+            </div>
+
+            <button id="solveBtn" onclick="solveProblem()">
+                Generate AI Plan →
+            </button>
+            <p id="status" role="status"></p>
+        </section>
+
+        <section class="panel results">
+            <h2>02. Planning Results</h2>
+            <div class="stats">
+                <div class="stat">
+                    <span id="stepCount">0</span>
+                    <small>Total Moves</small>
+                </div>
+                <div class="stat">
+                    <span id="resultStatus">Ready</span>
+                    <small>Planner Status</small>
+                </div>
+            </div>
+
+            <div id="steps" class="steps">
+                <p class="empty">
+                    Your generated plan will appear here.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            STRIPS-STYLE PLANNING · PYTHON · FLASK
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
